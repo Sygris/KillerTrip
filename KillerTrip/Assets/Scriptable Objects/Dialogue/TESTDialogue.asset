@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32f74116838efcc439e24264b7417ead, type: 3}
+  m_Name: TESTDialogue
+  m_EditorClassIdentifier: 
+  _dialogueSections:
+  - _soModel: {fileID: 7054497832607069301, guid: 0c6082c983b66e84fa978f72ea9102c4, type: 3}
+    _soName: Billy
+    _soDialogue: "I offered to be his runner but he told me I couldn't, and told
+      me to write down the reason so I didn\u2019t forget or lose it. He said *clears
+      through* \u201CMilk, Eggs, Newspaper, Bacon\u201D I don't really understand
+      it\u2026plus apparently I keep losing his memos."
+  - _soModel: {fileID: 7338340626556037687, guid: 2b357bf42ea14c143a2f045c0ecda58e, type: 3}
+    _soName: Jimmy
+    _soDialogue: The FitnessGram Pacer test is a multistage aerobic capacity test
+      that progressively gets more difficult as it continues.
+  - _soModel: {fileID: 7054497832607069301, guid: 0c6082c983b66e84fa978f72ea9102c4, type: 3}
+    _soName: Billy
+    _soDialogue: The FitnessGram Pacer test is a multistage aerobic capacity test
+      that progressively gets more difficult as it continues.
