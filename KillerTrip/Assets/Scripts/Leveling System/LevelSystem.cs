@@ -1,46 +1,47 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
-public class LevelSystem
+public class LevelSystem : MonoBehaviour
 {
-    private int _level;
-    private int _experience;
-    private int _experienceToNextLevel;
+    private int _currentLevel = 0;
+    private float _currentXP = 5;
+    private float _requiredXP = 10;
 
-    // Default Constructor
-    public LevelSystem()
+    private float _lerpTimer;
+    private float _delayTimer;
+
+    [Header("UI References")]
+    [SerializeField] private Image _backBarXP;
+    [SerializeField] private Image _frontBarXP;
+    [SerializeField] private TextMeshProUGUI _currentLevelUI;
+    [SerializeField] private TextMeshProUGUI _nextLevelUI;
+
+    private void Start()
     {
-        _level = 0;
-        _experience = 0;
-        _experienceToNextLevel = 100;
+        _frontBarXP.fillAmount = _currentXP / _requiredXP;
+        _backBarXP.fillAmount = _currentXP / _requiredXP;
+
+        _currentLevelUI.text = _currentLevel.ToString();
+        _nextLevelUI.text = (_currentLevel + 1).ToString();
     }
 
-    // Parameter Constructor
-    public LevelSystem(int level, int experience, int experienceToNextLevel)
+    private void Update()
     {
-        _level = level;
-        _experience = experience;
-        _experienceToNextLevel = experienceToNextLevel;
-    }
-
-    public void AddExperience(int amount)
-    {
-        _experience += amount;
-
-        if (_experience >= _experienceToNextLevel)
+        if (Keyboard.current.spaceKey.isPressed)
         {
-            // Player has enough experience to level up
-            // Level up player
-            _level++;
-
-            // Reset experience
-            _experience -= _experienceToNextLevel;
+            _currentXP += 5;
+            UpdateUI();
         }
     }
 
-    public int GetCurrentLevel()
+    private void UpdateUI()
     {
-        return _level;
+
     }
+
+
 }
