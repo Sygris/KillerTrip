@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
@@ -8,8 +6,8 @@ using UnityEngine.InputSystem;
 public class LevelSystem : MonoBehaviour
 {
     private int _currentLevel = 0;
-    private float _currentXP = 5;
-    private float _requiredXP = 10;
+    private float _currentXP = 0;
+    private float _requiredXP = 0;
 
     private float _lerpTimer;
     private float _delayTimer;
@@ -20,6 +18,14 @@ public class LevelSystem : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _currentLevelUI;
     [SerializeField] private TextMeshProUGUI _nextLevelUI;
 
+    [Header("Required XP Formula")]
+    [Range(1f, 300f)]
+    [SerializeField] private float _additionMultiplier = 300;
+    [Range(2f, 4f)]
+    [SerializeField] private float _powerMultiplier = 2;
+    [Range(7f, 14f)]
+    [SerializeField] private float _divisionMultiplier = 7;
+
     private void Start()
     {
         _frontBarXP.fillAmount = _currentXP / _requiredXP;
@@ -27,21 +33,76 @@ public class LevelSystem : MonoBehaviour
 
         _currentLevelUI.text = _currentLevel.ToString();
         _nextLevelUI.text = (_currentLevel + 1).ToString();
+
+        _requiredXP = CalculateRequiredXP();
     }
 
     private void Update()
     {
-        if (Keyboard.current.spaceKey.isPressed)
+        UpdateUI();
+        if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {
-            _currentXP += 5;
-            UpdateUI();
+            GainExperience(20);
         }
     }
 
     private void UpdateUI()
     {
+        float xpFraction = _currentXP / _requiredXP;
+        float frontBarXP = _frontBarXP.fillAmount;
 
+        if (frontBarXP < xpFraction)
+        {
+            _delayTimer += Time.deltaTime;
+            _backBarXP.fillAmount = xpFraction;
+
+            if (_delayTimer > 3)
+            {
+                _lerpTimer += Time.deltaTime;
+                float percentComplete = _lerpTimer / 4;
+                _frontBarXP.fillAmount = Mathf.Lerp(frontBarXP, _backBarXP.fillAmount, percentComplete);
+            }
+        }
     }
 
+    public void GainExperience(float amount)
+    {
+        _currentXP += amount;
 
+        if (_currentXP > _requiredXP)
+        {
+            LevelUp();
+        }
+
+        _lerpTimer = 0;
+        _delayTimer = 0;
+    }
+
+    private void LevelUp()
+    {
+        _currentLevel++;
+        
+        _currentLevelUI.text = _currentLevel.ToString();
+        _nextLevelUI.text = (_currentLevel + 1).ToString();
+
+        _frontBarXP.fillAmount = 0;
+        _backBarXP.fillAmount = 0;
+
+        _currentXP = Mathf.RoundToInt(_currentXP - _requiredXP);
+
+        _requiredXP = CalculateRequiredXP();
+    }
+
+    // Using runescpae formula = https://oldschool.runescape.wiki/w/Experience
+    private int CalculateRequiredXP()
+    {
+        int solveForRequiredXP = 0;
+
+        for (int levelCycle = 1; levelCycle <= _currentLevel; levelCycle++)
+        {
+            solveForRequiredXP += (int)Mathf.Floor(levelCycle + _additionMultiplier * Mathf.Pow(_powerMultiplier, levelCycle / _divisionMultiplier));
+        }
+
+        return solveForRequiredXP / 4;
+    }
 }
