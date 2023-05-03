@@ -1462,7 +1462,7 @@ PrefabInstance:
     - target: {fileID: 1480814353598730024, guid: 0c9e10a61f5b39f478677e32b440d850,
         type: 3}
       propertyPath: m_Name
-      value: Money (3)
+      value: Money
       objectReference: {fileID: 0}
     - target: {fileID: 1480814353598730027, guid: 0c9e10a61f5b39f478677e32b440d850,
         type: 3}
@@ -4967,7 +4967,7 @@ PrefabInstance:
     - target: {fileID: 7572703876576758407, guid: e2d09845a04f28645be8da58b134056a,
         type: 3}
       propertyPath: m_Name
-      value: TutorialCan (1)
+      value: TutorialPaintCan
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2d09845a04f28645be8da58b134056a, type: 3}
@@ -10468,7 +10468,7 @@ PrefabInstance:
     - target: {fileID: 1480814353598730024, guid: 0c9e10a61f5b39f478677e32b440d850,
         type: 3}
       propertyPath: m_Name
-      value: Money (2)
+      value: Money
       objectReference: {fileID: 0}
     - target: {fileID: 1480814353598730027, guid: 0c9e10a61f5b39f478677e32b440d850,
         type: 3}
@@ -20999,7 +20999,7 @@ PrefabInstance:
     - target: {fileID: 1480814353598730024, guid: 0c9e10a61f5b39f478677e32b440d850,
         type: 3}
       propertyPath: m_Name
-      value: Money (1)
+      value: Money
       objectReference: {fileID: 0}
     - target: {fileID: 1480814353598730027, guid: 0c9e10a61f5b39f478677e32b440d850,
         type: 3}
@@ -22389,7 +22389,7 @@ PrefabInstance:
     - target: {fileID: 7572703876576758407, guid: e2d09845a04f28645be8da58b134056a,
         type: 3}
       propertyPath: m_Name
-      value: TutorialCan (2)
+      value: TutorialPaintCan
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2d09845a04f28645be8da58b134056a, type: 3}
@@ -26441,7 +26441,7 @@ PrefabInstance:
     - target: {fileID: 7572703876576758407, guid: e2d09845a04f28645be8da58b134056a,
         type: 3}
       propertyPath: m_Name
-      value: TutorialCan
+      value: TutorialPaintCan
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2d09845a04f28645be8da58b134056a, type: 3}
@@ -31030,7 +31030,7 @@ PrefabInstance:
     - target: {fileID: 7572703876576758407, guid: e2d09845a04f28645be8da58b134056a,
         type: 3}
       propertyPath: m_Name
-      value: TutorialCan
+      value: TutorialPaintCan
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2d09845a04f28645be8da58b134056a, type: 3}
