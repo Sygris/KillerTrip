@@ -78,9 +78,26 @@ public class LevelSystem : MonoBehaviour
         _delayTimer = 0;
     }
 
+    // Passed Level = Level of the enemy or of the level
+    public void GainScalableExperience(float amount, int passedLevel)
+    {
+        if (passedLevel < _currentLevel)
+        {
+            float multiplier = 1 + (_currentLevel - passedLevel) * 0.01f;
+            _currentXP += amount * multiplier;
+        }
+        else
+        {
+            _currentXP += amount;
+        }
+
+        _lerpTimer = 0;
+        _delayTimer = 0;
+    }
+
     private void LevelUp()
     {
-        _currentLevel++;
+        ++_currentLevel;
         
         _currentLevelUI.text = _currentLevel.ToString();
         _nextLevelUI.text = (_currentLevel + 1).ToString();
