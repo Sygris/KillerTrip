@@ -2,13 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ConStatusObjective : ConsecutiveObjectivesManager
+public class ConStatusObjective : ObjectivesManager
 {
     [SerializeField] private string _objectiveTitle;
     [SerializeField] private List<GameObject> _targetObjects = new List<GameObject>();
 
+    private ConsecutiveObjectivesManager _consecutiveObjectivesManager;
+
     void Start()
     {
+        _consecutiveObjectivesManager = FindObjectOfType<ConsecutiveObjectivesManager>();
+
         _objectiveTitleText.text = _objectiveTitle;
         _objectiveQuantityText.text = _targetObjects.Count.ToString();
     }
@@ -16,7 +20,7 @@ public class ConStatusObjective : ConsecutiveObjectivesManager
     void Update()
     {
         if (_targetObjects.Count <= 0)
-            ObjectiveIsComplete();
+            _consecutiveObjectivesManager.ObjectiveIsComplete();
         else
             _objectiveQuantityText.text = _targetObjects.Count.ToString();
     }

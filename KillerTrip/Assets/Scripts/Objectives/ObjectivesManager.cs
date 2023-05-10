@@ -7,4 +7,30 @@ public class ObjectivesManager : MonoBehaviour
 {
     [SerializeField] protected TextMeshProUGUI _objectiveTitleText;
     [SerializeField] protected TextMeshProUGUI _objectiveQuantityText;
+
+    private List<GameObject> _listOfConsecutiveObjectives = new List<GameObject>();
+
+    private int _currentObjective;
+
+    void Start()
+    {
+        _currentObjective = 0;
+
+        foreach (Transform item in gameObject.transform.GetComponentInChildren<Transform>())
+            _listOfConsecutiveObjectives.Add(item.gameObject);
+
+        foreach (var item in _listOfConsecutiveObjectives)
+            item.SetActive(false);
+
+        _listOfConsecutiveObjectives[_currentObjective].SetActive(true);
+    }
+
+    public void ObjectiveIsComplete()
+    {
+        _listOfConsecutiveObjectives[_currentObjective].SetActive(false);
+
+        ++_currentObjective;
+
+        _listOfConsecutiveObjectives[_currentObjective].SetActive(true);
+    }
 }

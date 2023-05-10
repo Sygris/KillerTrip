@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ConsecutiveObjectivesManager : ObjectivesManager
+public class ConsecutiveObjectivesManager : MonoBehaviour
 {
     private List<GameObject> _listOfConsecutiveObjectives = new List<GameObject>();
 
@@ -21,19 +21,13 @@ public class ConsecutiveObjectivesManager : ObjectivesManager
         _listOfConsecutiveObjectives[_currentObjective].SetActive(true);
     }
 
-    void Update()
+    public void ObjectiveIsComplete()
     {
-        Debug.Log(_listOfConsecutiveObjectives.Count);
-    }
-
-    protected void ObjectiveIsComplete()
-    {
-        Debug.Log(_listOfConsecutiveObjectives.Count);
-
         _listOfConsecutiveObjectives[_currentObjective].SetActive(false);
 
         ++_currentObjective;
 
-        _listOfConsecutiveObjectives[_currentObjective].SetActive(true);
+        if (_currentObjective < _listOfConsecutiveObjectives.Count)
+            _listOfConsecutiveObjectives[_currentObjective].SetActive(true);
     }
 }

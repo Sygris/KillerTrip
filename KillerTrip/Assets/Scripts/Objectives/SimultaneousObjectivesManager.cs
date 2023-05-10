@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SimultaneousObjectivesManager : ObjectivesManager
+public class SimultaneousObjectivesManager : MonoBehaviour
 {
-    protected void ObjectiveIsComplete(GameObject target)
-    {
-        target.SetActive(false);
-    }
+    //public override void ObjectiveIsComplete()
+    //{
+    //    gameObject.SetActive(false);
+    //}
 }
