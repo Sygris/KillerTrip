@@ -2,9 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpinningMoney : MonoBehaviour
+public class SpinningObject : MonoBehaviour
 {
     [SerializeField] private float _spinSpeed;
+
+    void Start()
+    {
+        if (_spinSpeed == 0)
+            _spinSpeed = 200;
+    }
 
     void Update()
     {
