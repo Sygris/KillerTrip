@@ -30,6 +30,7 @@ namespace StarterAssets
 
         // Tiago
         public float Sensivity = 1f;
+        private bool _rotateOnMove = true;
 
         public AudioClip LandingAudioClip;
         public AudioClip[] FootstepAudioClips;
@@ -264,7 +265,12 @@ namespace StarterAssets
                     RotationSmoothTime);
 
                 // rotate to face input direction relative to camera position
-                transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
+                // Added the if condition so when the player is aiming the rotation is done
+                // in the ThirdPersonShooterController script
+                if(_rotateOnMove)
+                {
+                    transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
+                }
             }
 
 
@@ -392,9 +398,14 @@ namespace StarterAssets
             }
         }
 
-        public void SetSensivity(float SensivityState)
+        public void SetSensivity(float newSensivity)
         {
-            Sensivity = SensivityState;
+            Sensivity = newSensivity;
+        }
+
+        public void SetRotateOnMove(bool newRotateOnMove)
+        {
+            _rotateOnMove = newRotateOnMove;
         }
     }
 }
