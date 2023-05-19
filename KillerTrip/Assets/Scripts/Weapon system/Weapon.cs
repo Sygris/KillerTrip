@@ -6,6 +6,7 @@ public class Weapon : Item
 {
     public override bool Use()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("Using weapon:" + " " + gameObject.name);
+        return true;
     }
 }
