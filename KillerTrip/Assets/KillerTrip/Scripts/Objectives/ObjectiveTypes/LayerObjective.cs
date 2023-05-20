@@ -4,12 +4,6 @@ using UnityEngine;
 
 public class LayerObjective : ObjectivesManager
 {
-    [SerializeField] private string _objectiveTitle;
-    [SerializeField] private List<GameObject> _targetObjects = new List<GameObject>();
-    [SerializeField] private bool _isConsecutiveObjective = false;
-
-    private ObjectivesManager _objectivesManager;
-
     void Start()
     {
         _objectivesManager = transform.parent.GetComponent<ObjectivesManager>();
@@ -20,6 +14,12 @@ public class LayerObjective : ObjectivesManager
 
     void Update()
     {
+        foreach (GameObject item in _targetObjects)
+        {
+            if (item.layer == 0)
+                _targetObjects.Remove(item);
+        }
+
         if (_targetObjects.Count <= 0)
         {
             if (_isConsecutiveObjective)

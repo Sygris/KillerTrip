@@ -4,12 +4,6 @@ using UnityEngine;
 
 public class StatusObjective : ObjectivesManager
 {
-    [SerializeField] private string _objectiveTitle;
-    [SerializeField] private List<GameObject> _targetObjects = new List<GameObject>();
-    [SerializeField] private bool _isConsecutiveObjective = false;
-
-    private ObjectivesManager _objectivesManager;
-
     void Start()
     {
         _objectivesManager = transform.parent.GetComponent<ObjectivesManager>();

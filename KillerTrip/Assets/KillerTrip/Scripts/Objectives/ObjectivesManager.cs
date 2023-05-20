@@ -8,6 +8,12 @@ public class ObjectivesManager : MonoBehaviour
     [SerializeField] protected TextMeshProUGUI _objectiveTitleText;
     [SerializeField] protected TextMeshProUGUI _objectiveQuantityText;
 
+    [SerializeField] protected string _objectiveTitle;
+    [SerializeField] protected List<GameObject> _targetObjects = new List<GameObject>();
+    [SerializeField] protected bool _isConsecutiveObjective = false;
+
+    protected ObjectivesManager _objectivesManager;
+
     private List<GameObject> _listOfConsecutiveObjectives = new List<GameObject>();
 
     private int _currentObjective;
