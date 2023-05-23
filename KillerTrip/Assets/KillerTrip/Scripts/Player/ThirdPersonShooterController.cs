@@ -49,7 +49,7 @@ public class ThirdPersonShooterController : MonoBehaviour
 
     private void ToggleAim(bool isAiming)
     {
-        if(isAiming)
+        if (isAiming)
         {
             _aimVirtualCamera.gameObject.SetActive(true);
             _thirdPersonController.SetSensivity(_aimSensitivity);
