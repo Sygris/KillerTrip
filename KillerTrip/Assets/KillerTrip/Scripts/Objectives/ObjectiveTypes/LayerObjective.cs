@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StatusObjective : ObjectivesManager
+public class LayerObjective : ObjectivesManager
 {
     void Start()
     {
@@ -14,6 +14,12 @@ public class StatusObjective : ObjectivesManager
 
     void Update()
     {
+        foreach (GameObject item in _targetObjects)
+        {
+            if (item.layer == 0)
+                _targetObjects.Remove(item);
+        }
+
         if (_targetObjects.Count <= 0)
         {
             if (_isConsecutiveObjective)
