@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
@@ -14,6 +15,7 @@ namespace StarterAssets
 		public bool sprint;
 		public bool Aim;
 		public bool Attack;
+		public bool WeaponWheel;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -22,8 +24,12 @@ namespace StarterAssets
 		public bool cursorLocked = true;
 		public bool cursorInputForLook = true;
 
+        #region Events
+		public static event Action toggleWeaponWheel; 
+        #endregion
+
 #if ENABLE_INPUT_SYSTEM
-		public void OnMove(InputValue value)
+        public void OnMove(InputValue value)
 		{
 			MoveInput(value.Get<Vector2>());
 		}
@@ -55,6 +61,11 @@ namespace StarterAssets
 		{
 			AttackInput(value.isPressed);
 		}
+
+		public void OnWeaponWheel(InputValue value)
+        {
+			WeaponWheelInput(value.isPressed);
+        }
 #endif
 
 
@@ -87,6 +98,12 @@ namespace StarterAssets
 		{
 			Attack = newAttackState;
 		}
+
+		public void WeaponWheelInput(bool newWeaponWheelInput)
+        {
+			WeaponWheel = newWeaponWheelInput;
+			toggleWeaponWheel?.Invoke();
+        }
 
 		private void OnApplicationFocus(bool hasFocus)
 		{
