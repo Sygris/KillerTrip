@@ -10,10 +10,12 @@ public class ThirdPersonShooterController : MonoBehaviour
     [SerializeField] private float _normalSensivity;
     [SerializeField] private float _aimSensitivity;
     [SerializeField] private LayerMask _aimColliderLayerMask = new LayerMask();
+    [SerializeField] private float m_raycastDistance = 20f;
     [SerializeField] private Transform _debugTransform;
 
     private ThirdPersonController _thirdPersonController;
     private StarterAssetsInputs _starterAssetsInputs;
+    private Animator m_animator;
 
     private Vector3 m_mouseWorldPosition = Vector3.zero;
 
@@ -21,6 +23,7 @@ public class ThirdPersonShooterController : MonoBehaviour
     {
         _thirdPersonController = GetComponent<ThirdPersonController>();
         _starterAssetsInputs = GetComponent<StarterAssetsInputs>();
+        m_animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -35,7 +38,7 @@ public class ThirdPersonShooterController : MonoBehaviour
     {
         Vector2 screenCenterPoint = new Vector2(Screen.width / 2f, Screen.height / 2f);
         Ray ray = Camera.main.ScreenPointToRay(screenCenterPoint);
-        if (Physics.Raycast(ray, out RaycastHit raycastHit, 999f, _aimColliderLayerMask))
+        if (Physics.Raycast(ray, out RaycastHit raycastHit, m_raycastDistance, _aimColliderLayerMask))
         {
             _debugTransform.position = raycastHit.point;
             m_mouseWorldPosition = raycastHit.point;
@@ -54,6 +57,7 @@ public class ThirdPersonShooterController : MonoBehaviour
             _aimVirtualCamera.gameObject.SetActive(true);
             _thirdPersonController.SetSensivity(_aimSensitivity);
             _thirdPersonController.SetRotateOnMove(false);
+            m_animator.SetLayerWeight(1, Mathf.Lerp(m_animator.GetLayerWeight(1), 1f, Time.deltaTime * 10f));
 
             Vector3 worldAimTarget = m_mouseWorldPosition;
             // Locks vertical rotation (up/down).
@@ -67,6 +71,7 @@ public class ThirdPersonShooterController : MonoBehaviour
             _aimVirtualCamera.gameObject.SetActive(false);
             _thirdPersonController.SetSensivity(_normalSensivity);
             _thirdPersonController.SetRotateOnMove(true);
+            m_animator.SetLayerWeight(1, Mathf.Lerp(m_animator.GetLayerWeight(1), 0f, Time.deltaTime * 10f));
         }
     }
 }
