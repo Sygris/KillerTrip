@@ -1,19 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!64 &2017761274
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 638884250085099978}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 8119220456985108448, guid: 03cb6d243da2e474e940a0cfe0f112cc, type: 2}
 --- !u!1001 &296300820740650139
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -94,3 +80,16 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 296300820740650139}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &4631312533932025145
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 638884250085099978}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.9984211, y: 1.0350152, z: 0.9541629}
+  m_Center: {x: 0, y: 0.5175076, z: 0}
