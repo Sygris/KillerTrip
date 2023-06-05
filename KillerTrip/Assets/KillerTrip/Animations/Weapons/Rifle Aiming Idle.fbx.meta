@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 421356196d66b164c8ead6e088ae290b
+guid: a5de88f210c8c254da3340c237790181
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: Standing Melee Attack Horizontal
+    second: Rifle Aiming Idle
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -22,11 +22,7 @@ ModelImporter:
     rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
-    animationImportWarnings: "\nClip 'mixamo.com' has import animation warnings that
-      might lower retargeting quality:\nNote: Activate translation DOF on avatar
-      to improve retargeting quality.\n\t'Ball_R' is inbetween humanoid transforms
-      and has rotation animation that will be discarded.\n\t'Ball_L' is inbetween
-      humanoid transforms and has rotation animation that will be discarded.\n"
+    animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -40,11 +36,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Standing Melee Attack Horizontal
+      name: Rifle Aiming Idle
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0
-      lastFrame: 144
+      lastFrame: 186
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
