@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 using StarterAssets;
+using UnityEngine.Animations.Rigging;
 
 public class ThirdPersonShooterController : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class ThirdPersonShooterController : MonoBehaviour
     [SerializeField] private LayerMask _aimColliderLayerMask = new LayerMask();
     [SerializeField] private float m_raycastDistance = 20f;
     [SerializeField] private Transform _debugTransform;
+    [SerializeField] private Rig _aimRig;
+    [SerializeField] private float _aimingDuration = 20f;
 
     private ThirdPersonController _thirdPersonController;
     private StarterAssetsInputs _starterAssetsInputs;
@@ -54,7 +57,7 @@ public class ThirdPersonShooterController : MonoBehaviour
     {
         if (isAiming)
         {
-            _aimVirtualCamera.gameObject.SetActive(true);
+            //_aimVirtualCamera.gameObject.SetActive(true);
             _thirdPersonController.SetSensivity(_aimSensitivity);
             _thirdPersonController.SetRotateOnMove(false);
             m_animator.SetLayerWeight(1, Mathf.Lerp(m_animator.GetLayerWeight(1), 1f, Time.deltaTime * 10f));
@@ -64,7 +67,8 @@ public class ThirdPersonShooterController : MonoBehaviour
             worldAimTarget.y = transform.position.y;
             Vector3 aimDirection = (worldAimTarget - transform.position).normalized;
 
-            transform.forward = Vector3.Lerp(transform.forward, aimDirection, Time.deltaTime * 20f);
+            transform.forward = Vector3.Lerp(transform.forward, aimDirection, Time.deltaTime * _aimingDuration);
+            _aimRig.weight = Mathf.Lerp(_aimRig.weight, 1f, Time.deltaTime * _aimingDuration);
         }
         else
         {
@@ -72,6 +76,7 @@ public class ThirdPersonShooterController : MonoBehaviour
             _thirdPersonController.SetSensivity(_normalSensivity);
             _thirdPersonController.SetRotateOnMove(true);
             m_animator.SetLayerWeight(1, Mathf.Lerp(m_animator.GetLayerWeight(1), 0f, Time.deltaTime * 10f));
+            _aimRig.weight = Mathf.Lerp(_aimRig.weight, 0f, Time.deltaTime * _aimingDuration);
         }
     }
 }
