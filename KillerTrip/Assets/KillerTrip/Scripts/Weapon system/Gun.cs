@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Gun : Weapon
 {
+    [SerializeField] private ParticleSystem _muzzleEffect;
+
     public override bool Use()
     {
-        base.Use();
-        Debug.Log("\n Coming from the Gun Script!");
+        _muzzleEffect.Emit(1);
         return true;
     }
 }

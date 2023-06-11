@@ -57,7 +57,7 @@ public class ThirdPersonShooterController : MonoBehaviour
     {
         if (isAiming)
         {
-            //_aimVirtualCamera.gameObject.SetActive(true);
+            _aimVirtualCamera.gameObject.SetActive(true);
             _thirdPersonController.SetSensivity(_aimSensitivity);
             _thirdPersonController.SetRotateOnMove(false);
             m_animator.SetLayerWeight(1, Mathf.Lerp(m_animator.GetLayerWeight(1), 1f, Time.deltaTime * 10f));
