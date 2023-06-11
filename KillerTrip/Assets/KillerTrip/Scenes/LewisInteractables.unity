@@ -565,7 +565,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: Interact Text
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -677,9 +677,7 @@ MonoBehaviour:
   _interactionRange: 3
   _interactableTextObject: {fileID: 1129928487}
   _interactText: '[E] Collect '
-  _interactableLayer:
-    serializedVersion: 2
-    m_Bits: 64
+  _interactableTag: Interactable
 --- !u!136 &1151348497
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -773,7 +771,7 @@ GameObject:
   - component: {fileID: 1152635772}
   - component: {fileID: 1152635776}
   m_Layer: 6
-  m_Name: Sphere (1)
+  m_Name: Lewis' Viagra
   m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1002,7 +1000,7 @@ GameObject:
   - component: {fileID: 1604198936}
   - component: {fileID: 1604198940}
   m_Layer: 6
-  m_Name: Sphere (2)
+  m_Name: Zack's Horse
   m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1115,7 +1113,7 @@ GameObject:
   - component: {fileID: 1691121233}
   - component: {fileID: 1691121232}
   m_Layer: 6
-  m_Name: Sphere
+  m_Name: Tiago's Spunk Jar
   m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -8,31 +8,23 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField] private float _interactionRange;
     [SerializeField] private TextMeshProUGUI _interactableTextObject;
     [SerializeField] private string _interactText;
-    [SerializeField] private LayerMask _interactableLayer;
+    [SerializeField] private string _interactableTag;
 
-    void Update()
+    private Vector3 _direction = Vector3.forward;
+    private Ray _ray;
+
+    void FixedUpdate()
     {
-        Vector3 direction = Vector3.forward;
+        _ray = new Ray(transform.position, transform.TransformDirection(_direction * _interactionRange));
 
-        Ray ray = new Ray(transform.position, transform.TransformDirection(direction * _interactionRange));
-        Debug.DrawRay(transform.position, transform.TransformDirection(direction * _interactionRange));
+        //Debug.DrawRay(transform.position, transform.TransformDirection(_direction * _interactionRange));
 
-        _interactableTextObject.text = "";
-
-        if (Physics.Raycast(ray, out RaycastHit hit, _interactionRange))
+        if (Physics.Raycast(_ray, out RaycastHit hit, _interactionRange))
         {
-            if (hit.collider.gameObject.layer == 6)
-            {
-                Debug.Log("Layer Detection");
+            if (hit.collider.tag == _interactableTag)
                 _interactableTextObject.text = _interactText + hit.transform.name;
-            }
-
-            if (hit.collider.tag == "Interactable")
-            {
-                Debug.Log("Tag Detection");
-                _interactableTextObject.text = _interactText + hit.transform.name;
-            }
-
         }
+        else
+            _interactableTextObject.text = "";
     }
 }
