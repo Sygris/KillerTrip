@@ -60,26 +60,20 @@ public class WeaponSelector : MonoBehaviour
         }
     }
 
-    public GunData GetWeaponData(int index)
-    {
-        Debug.Log(m_weapons[index].GetType());
-        return (GunData)((Gun)m_weapons[index]).ItemData;
-    }
-
     public void GetWeaponData(int index, out Sprite sprite, out int ammo, out int maxAmmo)
     {
         sprite = m_weapons[index].ItemData.Sprite;
 
-        if (m_weapons[index] is Weapon)
-        {
-            ammo = 0;
-            maxAmmo = 0;
-        }
-        else
+        if (m_weapons[index] is Gun)
         {
             GunData data = (GunData)((Gun)m_weapons[index]).ItemData;
             ammo = data.MagazineSize;
             maxAmmo = data.MaxAmmo;
+        }
+        else
+        {
+            ammo = 0;
+            maxAmmo = 0;
         }
     }
 }
