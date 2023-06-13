@@ -9,7 +9,7 @@ public class WeaponSelector : MonoBehaviour
 
     private int m_index;
     private Weapon m_currentWeapon;
-    
+
     public Weapon CurrentWeapon => m_currentWeapon;
 
     private void Start()
@@ -19,30 +19,6 @@ public class WeaponSelector : MonoBehaviour
 
         Setup();
         SwitchWeapon(m_index);
-    }
-
-    // Not final as this update was made just for testing
-    private void Update()
-    {
-        if (Keyboard.current.digit1Key.isPressed)
-        {
-            SwitchWeapon(0);
-        }
-
-        if (Keyboard.current.digit2Key.isPressed)
-        {
-            SwitchWeapon(1);
-        }
-
-        if (Keyboard.current.digit3Key.isPressed)
-        {
-            SwitchWeapon(2);
-        }
-
-        if (Keyboard.current.spaceKey.isPressed)
-        {
-            m_currentWeapon.Use();
-        }
     }
 
     private void Setup()
@@ -81,6 +57,29 @@ public class WeaponSelector : MonoBehaviour
                 m_weapons[i].gameObject.SetActive(true);
                 m_currentWeapon = m_weapons[i];
             }
+        }
+    }
+
+    public GunData GetWeaponData(int index)
+    {
+        Debug.Log(m_weapons[index].GetType());
+        return (GunData)((Gun)m_weapons[index]).ItemData;
+    }
+
+    public void GetWeaponData(int index, out Sprite sprite, out int ammo, out int maxAmmo)
+    {
+        sprite = m_weapons[index].ItemData.Sprite;
+
+        if (m_weapons[index] is Weapon)
+        {
+            ammo = 0;
+            maxAmmo = 0;
+        }
+        else
+        {
+            GunData data = (GunData)((Gun)m_weapons[index]).ItemData;
+            ammo = data.MagazineSize;
+            maxAmmo = data.MaxAmmo;
         }
     }
 }

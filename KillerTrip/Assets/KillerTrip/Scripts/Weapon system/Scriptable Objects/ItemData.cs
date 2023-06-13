@@ -6,5 +6,6 @@ public class ItemData : ScriptableObject
 {
     public GameObject Model;
     public string Name;
+    public Sprite Sprite;
     public string Description;
 }
