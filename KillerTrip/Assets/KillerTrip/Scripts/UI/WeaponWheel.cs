@@ -36,7 +36,7 @@ public class WeaponWheel : MonoBehaviour
         if (m_isWeaponWheelActive)
         {
             Cursor.lockState = CursorLockMode.None;
-            Time.timeScale = 0.35f;
+            Time.timeScale = 0.5f;
         }
         else
         {
