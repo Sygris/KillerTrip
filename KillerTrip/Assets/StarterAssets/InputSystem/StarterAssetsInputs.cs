@@ -16,6 +16,7 @@ namespace StarterAssets
 		public bool Aim;
 		public bool Attack;
 		public bool WeaponWheel;
+		public bool UsingWeapon;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -25,7 +26,8 @@ namespace StarterAssets
 		public bool cursorInputForLook = true;
 
         #region Events
-		public static event Action toggleWeaponWheel; 
+		public static event Action ToggleWeaponWheel;
+		public static event Action Attacking;
         #endregion
 
 #if ENABLE_INPUT_SYSTEM
@@ -97,12 +99,13 @@ namespace StarterAssets
 		public void AttackInput(bool newAttackState)
 		{
 			Attack = newAttackState;
+			Attacking?.Invoke();
 		}
 
 		public void WeaponWheelInput(bool newWeaponWheelInput)
         {
 			WeaponWheel = newWeaponWheelInput;
-			toggleWeaponWheel?.Invoke();
+			ToggleWeaponWheel?.Invoke();
         }
 
 		private void OnApplicationFocus(bool hasFocus)

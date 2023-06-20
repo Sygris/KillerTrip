@@ -29,6 +29,11 @@ public class WeaponSelector : MonoBehaviour
         }
     }
 
+    private void Use()
+    {
+        m_currentWeapon.Use();
+    }
+
     public void SwitchWeapon(int index)
     {
         if (m_index >= m_weapons.Count)
@@ -75,5 +80,15 @@ public class WeaponSelector : MonoBehaviour
             ammo = 0;
             maxAmmo = 0;
         }
+    }
+
+    private void OnEnable()
+    {
+        StarterAssets.StarterAssetsInputs.Attacking += Use;
+    }
+
+    private void OnDisable()
+    {
+        StarterAssets.StarterAssetsInputs.Attacking -= Use;
     }
 }

@@ -60,11 +60,11 @@ public class WeaponWheel : MonoBehaviour
 
     private void OnEnable()
     {
-        StarterAssets.StarterAssetsInputs.toggleWeaponWheel += ToggleWeaponWheel;
+        StarterAssets.StarterAssetsInputs.ToggleWeaponWheel += ToggleWeaponWheel;
     }
 
     private void OnDisable()
     {
-        StarterAssets.StarterAssetsInputs.toggleWeaponWheel -= ToggleWeaponWheel;
+        StarterAssets.StarterAssetsInputs.ToggleWeaponWheel -= ToggleWeaponWheel;
     }
 }
