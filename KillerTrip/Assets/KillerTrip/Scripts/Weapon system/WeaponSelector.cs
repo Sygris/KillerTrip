@@ -72,7 +72,7 @@ public class WeaponSelector : MonoBehaviour
         if (m_weapons[index] is Gun)
         {
             GunData data = (GunData)((Gun)m_weapons[index]).ItemData;
-            ammo = data.MagazineSize;
+            ammo = m_weapons[index].GetComponent<Gun>().CurrentAmmo;
             maxAmmo = data.MaxAmmo;
         }
         else
