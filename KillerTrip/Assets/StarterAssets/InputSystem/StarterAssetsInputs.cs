@@ -17,6 +17,7 @@ namespace StarterAssets
 		public bool Attack;
 		public bool WeaponWheel;
 		public bool UsingWeapon;
+		public bool Reload;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -28,6 +29,7 @@ namespace StarterAssets
         #region Events
 		public static event Action ToggleWeaponWheel;
 		public static event Action Attacking;
+		public static event Action Reloading;
         #endregion
 
 #if ENABLE_INPUT_SYSTEM
@@ -62,6 +64,11 @@ namespace StarterAssets
 		public void OnAttack(InputValue value)
 		{
 			AttackInput(value.isPressed);
+		}
+
+		public void OnReload(InputValue value)
+		{
+			ReloadInput(value.isPressed);
 		}
 
 		public void OnWeaponWheel(InputValue value)
@@ -107,6 +114,12 @@ namespace StarterAssets
 			WeaponWheel = newWeaponWheelInput;
 			ToggleWeaponWheel?.Invoke();
         }
+
+		public void ReloadInput(bool newReloadInput)
+		{
+			Reload = newReloadInput;
+			Reloading?.Invoke();
+		}
 
 		private void OnApplicationFocus(bool hasFocus)
 		{
