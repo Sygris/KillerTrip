@@ -76,8 +76,10 @@ public class WeaponSelector : MonoBehaviour
         }
         else
         {
-            ammo = 0;
-            maxAmmo = 0;
+            // If -1 it means its a weapon without any ammo (knife, swrod,etc)
+            // Maybe change it so there is a bool in the scriptable object
+            ammo = -1;
+            maxAmmo = -1;
         }
     }
 

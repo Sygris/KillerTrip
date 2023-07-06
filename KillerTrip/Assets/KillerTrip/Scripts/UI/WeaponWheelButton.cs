@@ -19,7 +19,7 @@ public class WeaponWheelButton : MonoBehaviour
     {
         _weaponSprite.sprite = weaponSprite;
 
-        if (ammo == 0)
+        if (ammo == -1)
             _ammoText.text = "";
         else
             _ammoText.text = ammo.ToString() + "/" + magazineSize.ToString();

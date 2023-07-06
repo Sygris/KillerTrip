@@ -60,8 +60,8 @@ namespace StarterAssets
 			AimInput(value.isPressed);
 		}
 
-		public void OnAttack(InputValue value)
-		{
+        public void OnAttack(InputValue value)
+        {
 			AttackInput(value.isPressed);
 		}
 
@@ -75,7 +75,6 @@ namespace StarterAssets
 			WeaponWheelInput(value.isPressed);
         }
 #endif
-
 
 		public void MoveInput(Vector2 newMoveDirection)
 		{

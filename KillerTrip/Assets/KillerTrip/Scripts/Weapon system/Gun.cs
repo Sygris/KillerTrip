@@ -7,32 +7,41 @@ public class Gun : Weapon
     [SerializeField] private ParticleSystem _muzzleEffect;
 
     private int _currentAmmo;
+    private int _ammoAvailable;
+
+    private bool _canShootNextBullet;
+
+    #region Properties
     public int CurrentAmmo
     {
         get { return _currentAmmo; }
     }
 
-    private int _ammoAvailable;
     public int AmmoAvailable
     {
         get { return _ammoAvailable; }
     }
+    #endregion
 
     private void Start()
     {
+        _canShootNextBullet = true;
+
         _currentAmmo = ((GunData)ItemData).MagazineSize;
         _ammoAvailable = ((GunData)ItemData).MaxAmmo;
     }
 
-    private void Update()
-    {
-        Debug.Log(FindObjectOfType<StarterAssets.StarterAssetsInputs>().Attack);
-    }
-
     public override bool Use()
     {
-        _muzzleEffect.Emit(1);
-        _currentAmmo--;
+        if (CanShoot())
+        {
+            _muzzleEffect.Emit(1);
+            _currentAmmo--;
+        }
+        else
+        {
+            Debug.Log("Reload u dumbass!");
+        }
         return true;
     }
 
@@ -52,6 +61,18 @@ public class Gun : Weapon
             _ammoAvailable -= bulletsToAdd;
             _currentAmmo += bulletsToAdd;
         }
+    }
+
+    protected IEnumerator FireRateDelay()
+    {
+        _canShootNextBullet = false;
+
+        yield return new WaitForSeconds(((GunData)ItemData).FireRate);
+    }
+
+    private bool CanShoot()
+    {
+        return _currentAmmo > 0 && _canShootNextBullet;
     }
 
     private void OnEnable()
