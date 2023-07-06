@@ -24,6 +24,11 @@ public class Gun : Weapon
         _ammoAvailable = ((GunData)ItemData).MaxAmmo;
     }
 
+    private void Update()
+    {
+        Debug.Log(FindObjectOfType<StarterAssets.StarterAssetsInputs>().Attack);
+    }
+
     public override bool Use()
     {
         _muzzleEffect.Emit(1);

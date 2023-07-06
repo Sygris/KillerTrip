@@ -16,7 +16,6 @@ namespace StarterAssets
 		public bool Aim;
 		public bool Attack;
 		public bool WeaponWheel;
-		public bool UsingWeapon;
 		public bool Reload;
 
 		[Header("Movement Settings")]
