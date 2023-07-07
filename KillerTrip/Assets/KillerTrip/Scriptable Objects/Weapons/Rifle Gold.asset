@@ -17,6 +17,6 @@ MonoBehaviour:
   Sprite: {fileID: 21300044, guid: 6674e8c43c63e4f4184cbd009379498d, type: 3}
   Description: Automatic Rifle
   Damage: 55
-  FireRate: 23
+  FireRate: 1
   MaxAmmo: 250
   MagazineSize: 44
